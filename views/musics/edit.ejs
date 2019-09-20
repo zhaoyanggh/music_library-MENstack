@@ -1,0 +1,27 @@
+<% include ../partials/header%>
+
+<div class="container">
+  <div class="row">
+    <h1 style="text-align:center;">Edit the Song</h1>
+    <div style="width: 30%; margin: 25px auto;">
+    <form class="" action="/musics/<%=music._id%>?_method=PUT" method="post">
+      <div class="form-group">
+        <input class="form-control"type="text" name="name" value="<%=music.name%>">
+      </div>
+      <div class="form-group">
+        <input class="form-control"type="text" name="image" value="<%=music.image%>">
+      </div>
+      <div class="form-group">
+        <input class="form-control"type="text" name="lyrics" value="<%=music.lyrics%>">
+      </div>
+      <button class="btn btn-lg btn-primary btn-block"type="submit">Submit!</button>
+    </form>
+    <a href="/musics">Back</a>
+    </div>
+
+  </div>
+
+</div>
+
+
+<% include ../partials/footer%>

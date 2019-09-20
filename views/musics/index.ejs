@@ -1,0 +1,49 @@
+<% include ../partials/header%>
+
+
+<div class="container">
+  <header class="jumbotron">
+    <div class="container">
+
+
+    <h1>My Musics Library</h1>
+    <p>view our hand-picked songs from all types of musics</p>
+    <p>
+      <a class="btn btn-primary btn-lg" href="/musics/new">Add New Song</a>
+    </p>
+    </div>
+  </header>
+
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h3>Our Most Favorite Songs!</h3>
+
+    </div>
+
+  </div>
+
+  <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+
+    <% musics.forEach(function(music){ %>
+      <div class="col-md-3 col-sm-6">
+        <div class="thumbnail">
+          <img src="<%=music.image%>">
+          <div class="caption">
+            <h4><%= music.name %></h4>
+          </div>
+          <p>
+            <a href="/musics/<%=music._id%>" class="btn btn-primary">More Info</a>
+          </p>
+        </div>
+
+
+      </div>
+    <% }); %>
+
+  </div>
+
+
+</div>
+
+<% include ../partials/footer%>

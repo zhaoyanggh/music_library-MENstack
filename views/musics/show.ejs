@@ -1,0 +1,71 @@
+<% include ../partials/header%>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <p class="lead">Related Songs</p>
+      <div class="list-group">
+        <li class="list-group-item">1</li>
+        <li class="list-group-item">2</li>
+        <li class="list-group-item">3</li>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="thumbnail">
+        <img class="img-responsive"src="<%=music.image%>">
+        <div class="caption-full" >
+          <div class="pull-right">
+          <a href="#"><h4><%=music.name%></h4></a>
+          <div class="pre-scrollable">
+            <%=music.lyrics%>
+          </div>
+          <br>
+          <p>
+            <em>
+              Submitted By <%=music.author.username%>
+            </em>
+            </p>
+            <%if(currentUser && music.author.id && music.author.id.equals(currentUser._id)){%>
+            <a class="btn btn-warning" href="/musics/<%=music._id%>/edit">Edit</a>
+            <form id="delete_form" action="/musics/<%=music._id%>?_method=DELETE" method="post">
+              <button class="btn btn-danger">Delete</button>
+            </form>
+            <%}%>
+          </div>
+        </div>
+      </div>
+      <div class="well">
+        <div class="text-right">
+          <a class="btn btn-success" href="/musics/<%=music._id%>/comments/new">Add New Comment</a>
+        </div>
+        <% if(music.comments.length == 0){ %>
+          <h3>No Comments yet!</h3>
+        <%} else { %>
+          <% music.comments.forEach(function(comment){%>
+            <div class="row">
+              <div class="col-md-12">
+                <em><%= comment.author.username%></em>
+                <h4><p><%=comment.text%></p></h4>
+                <%if(currentUser && comment.author.id && comment.author.id.equals(currentUser._id)){%>
+                <a class="btn btn-xs btn-warning" href="/musics/<%=music._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                <form id="delete" action="/musics/<%=music._id%>/comments/<%=comment._id%>?_method=DELETE" method="post">
+                  <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                </form>
+                <%}%>
+              </div>
+
+            </div>
+
+          <% });%>
+        <%};%>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<% include ../partials/footer%>
