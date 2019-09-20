@@ -49,6 +49,6 @@ mongoose.connect('mongodb+srv://zybu:' + process.env.PASSWORD + '@cluster0-q8uy8
 	console.log('ERROR:', err.message);
 });
 
-app.listen(3000,function(){
+app.listen(process.env.PORT, process.env.IP,function(){
 	console.log('Server is listening...');
 })
